@@ -9,6 +9,9 @@ import img3 from './images/3.jpg'
 import img4 from './images/4.jpg'
 import img5 from './images/5.jpg'
 
+import arrowObj from './images/obj/arrow.obj'
+import arrowMtl from './images/obj/arrow.obj.mtl'
+
 class App extends React.Component {
   constructor(props) {
     super(props)
@@ -44,8 +47,15 @@ class App extends React.Component {
     return (
       <div>
         <Scene shadow vr-mode-ui="enabled: true">
-          <a-assets />
+          <a-assets>
+            <a-asset-item id="arrow-obj" src={arrowObj} />
+            <a-asset-item id="arrow-mtl" src={arrowMtl} />
+          </a-assets>
+
           <Entity primitive="a-sky" src={this.state.images[this.state.active].src} />
+          
+          <a-obj-model src="#arrow-obj" mtl="#arrow-mtl"></a-obj-model>
+
         </Scene>
 
         <button
